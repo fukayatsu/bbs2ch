@@ -1,15 +1,31 @@
 require 'mechanize'
+require 'bbs2ch/image'
 
 module BBS2ch
   class Response
-    def initialize(num, name, email, time, message)
-      @num = num
+    def initialize(name, email, time, message, extra={})
       @name = name
       @email = email
       @time = time
       @message = message
+      @extra = extra
+      @extra['response'] =
+        {name: @name, email: @email, time: @time, message: @message}
     end
 
-    attr_reader :num, :name, :email, :time, :message
+    def images(regex = /((http|https|ttp):\/\/.*\.(jpg|png|gif))/)
+      images = []
+      @message.split(/<br>/).each{|line|
+        match = line.scan regex
+        if match.size > 0
+          url = match[0][0]
+          url = 'h' + url if url[0] != 'h'
+          images << Image.new(url, @extra)
+        end
+      }
+      images
+    end
+
+    attr_reader :name, :email, :time, :message, :extra
   end
 end

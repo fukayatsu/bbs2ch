@@ -30,7 +30,7 @@ describe BBS2ch do
 
       it 'size not 0' do
         @menu.boards.size.should_not == 0
-        p @menu.boards(/料理/).first.threads(/料理/).first.responses.first
+        #p @menu.boards(/料理/).first.threads(/料理/).first.responses.first
       end
 
     end
@@ -38,8 +38,34 @@ describe BBS2ch do
 
   describe 'Board' do
     context '#initialize' do
-
     end
   end
+
+  describe 'Thread' do
+    context '#initialize' do
+    end
+  end
+
+  describe 'Response' do
+    context '#initialize' do
+    end
+
+    context '#images' do
+      it 'has 2 images' do
+        response = BBS2ch::Response.new('name', 'email', 'time', '
+          http://hoge.com/hoge/piyo.jpg<br>
+          ttp://hoge.com/hoge/piyo.png<br>')
+        images = response.images
+        images[0].url.should == 'http://hoge.com/hoge/piyo.jpg'
+        images[1].url.should == 'http://hoge.com/hoge/piyo.png'
+      end
+    end
+  end
+
+  describe 'Image' do
+    context '#initialize' do
+    end
+  end
+
 
 end
