@@ -9,7 +9,7 @@ module BBS2ch
       @time = time
       @message = message
       @extra = extra
-      @extra['response'] =
+      @extra[:response] =
         {name: @name, email: @email, time: @time, message: @message}
     end
 
@@ -24,6 +24,12 @@ module BBS2ch
         end
       }
       images
+    end
+
+    # TODO arrayに対応
+    def self.parse(text, extra={})
+      name, email, time_str, message = text.chomp.split(/<>/)
+      Response.new(name, email, Time.parse(time_str), message, extra)
     end
 
     attr_reader :name, :email, :time, :message, :extra

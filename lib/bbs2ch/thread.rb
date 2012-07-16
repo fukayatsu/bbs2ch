@@ -8,7 +8,7 @@ module BBS2ch
       @name = name
       @url = url
       @extra = extra
-      @extra['thread'] = {name: @name, url: @url}
+      @extra[:thread] = {name: @name, url: @url}
     end
 
     # TODO select, cache
@@ -19,8 +19,7 @@ module BBS2ch
 
       responses = []
       page.body.toutf8.lines{|line|
-        name, email, time_str, message = line.chomp.split(/<>/)
-        responses << Response.new(name, email, Time.parse(time_str), message, extra)
+        responses << Response.parse(line)
       }
       responses
     end

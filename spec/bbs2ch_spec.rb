@@ -51,7 +51,7 @@ describe BBS2ch do
     end
 
     context '#images' do
-      it 'has 2 images' do
+      it 'return 2 images' do
         response = BBS2ch::Response.new('name', 'email', 'time', '
           http://hoge.com/hoge/piyo.jpg<br>
           ttp://hoge.com/hoge/piyo.png<br>')
@@ -66,6 +66,5 @@ describe BBS2ch do
     context '#initialize' do
     end
   end
-
 
 end

@@ -9,7 +9,7 @@ module BBS2ch
       @name = name
       @url = url
       @extra = extra
-      @extra['board'] = {url: @url, name: @name}
+      @extra[:board] = {url: @url, name: @name}
     end
 
     # TODO select
