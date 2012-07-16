@@ -1,6 +1,6 @@
 # Bbs2ch
 
-TODO: Write a gem description
+A gem to read 2ch bbs
 
 ## Installation
 
@@ -18,7 +18,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'bbs2ch'
+
+    menu = BBS2ch::Menu.new
+
+    # all boards on 2ch
+    all_boards = menu.boards
+
+    # or select with name(regex)
+    news_boards = menu.boards(/ニュース/)
+
+
+    # all threads on first news_board
+    threads = news_boards.first.threads
+
+    # or select with name(regex)
+    threads = news_boards.first.threads(/政治/)
+
+    # get responses on the thread
+    p threads.first.responses
+
 
 ## Contributing
 
