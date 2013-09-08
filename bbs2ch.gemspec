@@ -15,8 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = BBS2ch::VERSION
 
-  gem.add_dependency "mechanize"
+  gem.add_dependency "faraday",  '~> 0.8.8'
 
   gem.add_development_dependency "rspec"
-  gem.add_development_dependency "fakefs"
+  gem.add_development_dependency "pry"
 end
