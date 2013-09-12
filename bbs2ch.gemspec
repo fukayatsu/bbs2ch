@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.name          = "bbs2ch"
   gem.require_paths = ["lib"]
   gem.version       = BBS2ch::VERSION
+  gem.license       = 'MIT'
 
   gem.add_dependency "faraday",  '~> 0.8.8'
 
